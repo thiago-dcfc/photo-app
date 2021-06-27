@@ -1,2 +1,16 @@
-<h1>Photo-App</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="container py-4 text-center">
+  <div class="p-5 mb-4 bg-light rounded-3 row align-items-center" id="container-home">
+    <div class="rounded-3 bg-faded-primary">
+      <div class="container-fluid py-5">
+        <span class="display-5 fw-bold rounded text-white px-3 py-2 link-success">PhotoApp</span>
+        <p class="col-md-8 fs-4 text-white" id="center-text-home">Your photos need some help</p>
+        <% if user_signed_in? %>
+        <% else %>
+          <%= link_to 'Buy now', new_user_registration_path, class: 'btn btn-lg btn-primary' %>
+          <strong class="text-white">&nbsp; OR &nbsp;</strong>
+          <%= link_to 'Log in', user_session_path, class: 'btn btn-lg btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

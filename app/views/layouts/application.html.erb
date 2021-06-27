@@ -7,10 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://js.stripe.com/v2' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    <div class="container mt-4">
+      <div class="row justify-content-md-center">
+        <%= render 'layouts/messages' %>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

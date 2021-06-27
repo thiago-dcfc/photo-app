@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid container">
+    <%= link_to 'PhotoApp', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Images', images_path,
+                      class: request.path == root_path ? 'nav-link active' : 'nav-link' %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown d-flex">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <%= fa_icon 'user' %> <%= current_user.email %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="dropdown-item">Edit profile</li>
+            </ul>
+          </li>
+          <li class="nav-item d-flex margin-left">
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+          </li>
+        <% else %>
+          <li class="nav-item d-flex">
+            <%= link_to 'Login', user_session_path, class: 'btn btn-primary' %>
+          </li>
+          <li class="nav-item d-flex margin-left">
+            <%= link_to 'Sing up', new_user_registration_path, class: 'btn btn-primary' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
